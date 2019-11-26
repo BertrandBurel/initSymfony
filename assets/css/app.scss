@@ -1,0 +1,19 @@
+$body-color: #FFFFFF;
+$body-bg: #000000;
+$navbar-bg: #8B0000;
+
+
+body {
+  background-color : $body-bg;
+  color : $body-color;
+
+  .navbar {
+    background-color: $navbar-bg !important;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+    }
+}
+
+@import "~bootstrap/scss/bootstrap";
