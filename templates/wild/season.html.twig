@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ program.title }}
+{% endblock %}
+
+{% block body %}
+    <div class="media">
+        <img class="align-self-start mr-3" src="{{ program.poster }}" alt="{{ program.title }} poster">
+        <div class="media-body">
+            <h1 class="mt-2">{{ program.title }}</h1>
+            <p class="mt-2">{{ program.summary }}</p>
+            <h2 class="mt-3 my-4">Liste des épisodes : </h2>
+            {% if episodes %}
+                {% for episode in episodes %}
+                    <a href="#">
+                        <h3 class>Episode {{ episode.number }} - ({{ episode.title }})</h3>
+                    </a>
+                    <p>{{ episode.synopsis }}</p>
+                {% endfor %}
+            {% else %}
+                <p>Désolé, nous n'avons pas trouvé d'épisodes pour cette saison.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div>
+        <p><a href="{{ path("wild_index") }}">Retour à l'accueil</a></p>
+        <p><a href="#">Retour à l'écran de la série</a></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ program.title }}
+{% endblock %}
+
+{% block body %}
+    <div class="media">
+        <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
+        <div class="media-body">
+            <h1 class="mt-2">{{ program.title }}</h1>
+            <p class="mt-3">{{ program.summary }}</p>
+            <h2 class="mt-3 my-4">Liste des saisons : </h2>
+            {% if seasons %}
+                {% for season in seasons %}
+                    <a href="{{ path('show_season', {'id' : season.id}) }}">
+                        <h3>Saison {{ season.number }}  ({{ season.year }})</h3>
+                    </a>
+                {%  endfor %}
+            {% else %}
+                <p>Désolé, nous n'avons pas trouvé de saison pour cette série.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <a href="{{ path('wild_index') }}">
+        Retour à l'accueil
+    </a>
+{% endblock %}
